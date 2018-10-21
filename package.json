@@ -1,0 +1,27 @@
+{
+  "name": "test-04",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TDhananjaya/Test-04.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TDhananjaya/Test-04/issues"
+  },
+  "homepage": "https://github.com/TDhananjaya/Test-04#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.9"
+  }
+}
