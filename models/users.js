@@ -1,19 +1,22 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt-nodejs");
 const SALT_FACTOR = 10;
 
-const adminSchema = new Schema({
+const userSchema = new mongoose.Schema({
 
-    username:{type:String,unique:true},
-    password:{type:String,default:"admin"},
-    type:{type:String},
+    // need to use validations 
+    username: { type: String, required: true, unique: true },
+    password: { type: String, required: true, unique: true },
+    firstName: { type: String, default: "First Name" },
+    email: { type: String, unique: true, required: true },
+    telePhoneNumber: { type: Number },
+    address:{type:String ,required:true},
+    type:{type:String,default:"user"},
     createdAt: { type: Date, default: Date.now }
 });
 
 
-
-adminSchema.pre("save", function(done){
+userSchema.pre("save", function(done){
     var user = this;
     bcrypt.genSalt(SALT_FACTOR, function (err, salt) {
         if (err) {
@@ -32,11 +35,10 @@ adminSchema.pre("save", function(done){
 });
 
 
-adminSchema.methods.checkPassword = function (guess, done) {
+userSchema.methods.checkPassword = function (guess, done) {
     bcrypt.compare(guess, this.password, function (err, isMAtch) {
         done(err, isMAtch);
     });
 };
 
-module.exports = mongoose.model("Admin", adminSchema);
-
+module.exports = mongoose.model("User", userSchema, "users");

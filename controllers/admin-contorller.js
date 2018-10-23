@@ -8,6 +8,7 @@ const SECRET_KEY = "sathira";
 // autheticate users 
 authenticateUsers = function (req, res, next) {
     userData = req.body;
+    console.log("hellow");
     console.log(userData);
     Admin.findOne({ username: userData.username }, function (err, user) {
         if (err) {
@@ -32,7 +33,7 @@ authenticateUsers = function (req, res, next) {
 
                 if (isMatch) {
 
-                    const token = jwt.sign({ username: user.username }, SECRET_KEY);
+                    const token = jwt.sign({ username: user.username,type:user.type }, SECRET_KEY);
 
                     res.status(200);
                     res.send({ token: token });
