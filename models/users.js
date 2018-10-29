@@ -5,12 +5,13 @@ const SALT_FACTOR = 10;
 const userSchema = new mongoose.Schema({
 
     // need to use validations 
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true, unique: true },
+   
     firstName: { type: String, default: "First Name" },
+    lastName:{ type: String, default: "Last Name" },
+    password: { type: String, required: true },
     email: { type: String, unique: true, required: true },
     telePhoneNumber: { type: Number },
-    address:{type:String ,required:true},
+    address:{type:String},
     type:{type:String,default:"user"},
     createdAt: { type: Date, default: Date.now }
 });

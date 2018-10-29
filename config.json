@@ -1,14 +1,14 @@
 {
     "development":{
-        "mongoUrl":"mongodb://localhost:27017/test",
+        "mongoUrl":"mongodb://localhost:27017/food",
         "port":3000
     },
     "test":{
-        "mongoUrl":"mongodb://localhost:27017/test",
+        "mongoUrl":"mongodb://localhost:27017/food",
         "port":3000
     },
     "production":{
-        "mongoUrl":"mongodb://localhost:27017/test",
+        "mongoUrl":"mongodb://localhost:27017/food",
         "port":3000
     }
     
