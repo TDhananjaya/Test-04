@@ -1,5 +1,7 @@
 const User = require("../models/users");
+const Shop =require("../models/shop");
 const jwt = require("jsonwebtoken");
+
 const SECRET_KEY = "sathira";
 
 registerUser = function (req, res, next) {
@@ -74,3 +76,27 @@ authenticateUsers = function (req, res, next) {
 }
 
 module.exports.authenticateUsers = authenticateUsers;
+
+addShop = function (req, res, next) {
+
+
+    console.log(req.body);
+    
+    var shopData = req.body;
+    var newShop = new Shop(shopData);
+     newShop.save(function (err) {
+        if (err) {
+            res.status(400);
+            res.send(err);
+        } else {
+            res.status(201);
+           
+            res.send({ success: "shop created" });
+        }
+    });
+
+    
+
+}
+
+module.exports.addShop = addShop;
