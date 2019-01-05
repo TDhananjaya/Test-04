@@ -100,3 +100,41 @@ addShop = function (req, res, next) {
 }
 
 module.exports.addShop = addShop;
+
+getShops=function(req,res,next){
+    
+    var data =req.body;
+    console.log(data);
+    Shop.find({userId:data.userId},function(err,shops){
+        if(err){
+            res.status(500).send("internal server error");
+        }
+        if(!shops){
+            res.status(500).send("no shops");
+        }
+        if(shops){
+            res.status(200).send({shops:shops});
+        }
+    });
+    
+}
+
+module.exports.getShops=getShops;
+
+getShop=function(req,res,next){
+    var data =req.params.id;
+    console.log(data);
+    Shop.findOne({_id:data},function(err,shops){
+        if(err){
+            res.status(500).send("internal server error");
+        }
+        if(!shops){
+            res.status(500).send("no shops");
+        }
+        if(shops){
+            res.status(200).send(shops);
+        }
+    });
+}
+
+module.exports.getShop=getShop;
